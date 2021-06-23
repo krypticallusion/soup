@@ -1,0 +1,13 @@
+[Unit]
+Description=Start phonesim modem and enable and start it.
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=(phonesim -p 12345 /usr/share/phonesim/default.xml &) && dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:"Powered" variant:boolean:true && dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:"Online" variant:boolean:true
+
+[Install]
+WantedBy=multi-user.target
