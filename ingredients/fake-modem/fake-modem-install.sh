@@ -3,6 +3,7 @@
 curl https://raw.githubusercontent.com/krypticallusion/soup/master/ingredients/fake-modem/fake-modem-init.sh -o fmi.sh
 curl https://raw.githubusercontent.com/krypticallusion/soup/master/ingredients/fake-modem/fake-modem-sys.service -o fake-modem.service
 
+chmod +x fmi.sh
 ./fmi.sh 
 sudo mv ./fake-modem.service /etc/systemd/system/
 
